@@ -11,7 +11,15 @@
 <p th:text="${user.getId()}">VALUE</p>
 <p th:text="${user.getSurname()}">VALUE</p>
 
-<a th:href="@{/user/id/edit(id=${user.getId()})}">Edit</a>
+<form th:method="PATCH" th:action="@{/user/id(id=${user.getId()})}" th:object="${user}">
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+    <br>
+    <label for="surname">Enter surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+    <br>
+    <input type="submit" value="Update!">
+</form>
 
 <form th:method="DELETE" th:action="@{/user/id(id=${user.getId()})}">
     <input type="submit" value="Delete!"/>

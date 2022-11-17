@@ -41,14 +41,8 @@ public class UserController {
         return "redirect:/user";
     }
 
-    @GetMapping("/id/edit")
-    public String edit(Model model, @RequestParam("id") int id) {
-        model.addAttribute("user", userService.findOne(id));
-        return "edit";
-    }
-
     @PatchMapping("/id")
-    public String update(@ModelAttribute("user") User user, @RequestParam(value = "id") int id) {
+    public String update(@ModelAttribute("user") User user, @RequestParam("id") int id) {
         userService.update(id, user);
         return "redirect:/user";
     }
